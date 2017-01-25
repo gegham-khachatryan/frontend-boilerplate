@@ -1,41 +1,74 @@
 'use strict';
 
-var appDependencies = [
-  'ng',
-  'ui.router'
-];
+var app = angular.module('app', [
+    'ng',
+    'ngAnimate',
+    'ui.router',
+    'ui.bootstrap'
+]);
 
-angular
-  .module('app', appDependencies)
-  .config(appConfig)
-  .constant('config', require('../../config.json'));
+app.config([
+    '$stateProvider',
+    '$urlRouterProvider',
+    '$locationProvider',
+    '$qProvider',
+    function ($stateProvider, $urlRouterProvider, $locationProvider, $qProvider) {
 
-require('./app.controller');
-require('./about.controller');
+        $qProvider.errorOnUnhandledRejections(false);
 
-appConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+        $stateProvider
+            .state('app', {
+                abstract: true,
+                views: {
+                    '@': {
+                        templateUrl: 'views/main.html',
+                        controller: 'AppController'
+                    },
+                    'header@app': {
+                        templateUrl: 'views/components/header.html',
+                        controller: 'HeaderController'
+                    },
+                    'footer@app': {
+                        templateUrl: 'views/components/footer.html',
+                        controller: 'FooterController'
+                    }
+                }
+            })
+            .state('app.home', {
+                url: '/',
+                controller: 'HomeController',
+                page: { title: 'Home Page' },
+                templateUrl: 'views/home.html'
+            })
+            .state('app.about', {
+                url: '/',
+                controller: 'AboutController',
+                page: { title: 'About Page' },
+                templateUrl: 'views/about.html'
+            });
 
-function appConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
-  var routes = [
-    {
-      name: 'main',
-      path: ''
-    },
-    {
-      name: 'about',
-      path: 'about'
+        $urlRouterProvider.otherwise('/404');
+        $locationProvider.html5Mode(true);
     }
-  ];
+]).run(function ($rootScope, $state, $log) {
+    $rootScope.$log = $log;
+    $rootScope.$state = $state;
+});
 
-  routes.forEach(function(route){
-    $stateProvider.state(route.name, {
-      url: '/' + route.path,
-      views: {
-        guest: { templateUrl: 'views/' + route.name + '.html' }
-      }
-    });
-  });
+app.constant('config', require('../../config.json'));
 
-  $urlRouterProvider.otherwise("/404");
-  $locationProvider.html5Mode(true);
-}
+//////////////////////////////////////////////////////
+///////////////////// CONTROLLERS ////////////////////
+//////////////////////////////////////////////////////
+
+require('./controllers/app.controller');
+require('./controllers/home.controller');
+require('./controllers/about.controller');
+
+
+require('./controllers/components/footer.controller');
+require('./controllers/components/header.controller');
+
+//////////////////////////////////////////////////////
+///////////////////// DIRECTIVES ////////////////////
+//////////////////////////////////////////////////////

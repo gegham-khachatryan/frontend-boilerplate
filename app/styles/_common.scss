@@ -1,0 +1,20 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $c_text;
+    font-size: $fs_base;
+    font-family: $ff_roboto;
+}
+
+.container {}
+
+#__bs_notify__ {
+    display: none !important;
+}
+

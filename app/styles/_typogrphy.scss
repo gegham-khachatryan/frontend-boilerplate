@@ -1,0 +1,53 @@
+// Heading
+h1,h2,h3,h4,h5 {
+    color: $c_text;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+}
+
+h6 {
+    font-size: 11px;
+    font-family: $ff_nunito;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+p {
+    font-size: 11px;
+    font-family: $ff_nunito;
+    .light {
+        font-weight: 300;
+    }
+    .strong {
+        font-weight: 700;
+    }
+}
+
+a {
+    color: $c_link;
+}

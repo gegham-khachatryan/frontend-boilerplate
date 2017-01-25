@@ -1,0 +1,9 @@
+nav.navbar.navbar-default
+	.container-fluid
+		.navbar-header
+			a.navbar-brand(ui-sref="app.home") Brand
+			ul.nav.navbar-nav.navbar-right
+				li(ng-class="{'active': $state.is('app.home')}")
+					a(ui-sref="app.home") Home
+				li(ng-class="{'active': $state.is('app.about')}")
+					a(ui-sref="app.about") About

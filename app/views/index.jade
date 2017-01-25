@@ -1,7 +1,8 @@
-html(ng-app='app', ng-controller='AppController')
+html(ng-app='app')
   head
+    base(href='/')
     meta(charset='utf-8')
-    title frontendboilerplate
+    title My App - {{$state.current.page.title}}
     meta(name='description', content='')
     meta(property='og:description', content='')
 
@@ -28,22 +29,9 @@ html(ng-app='app', ng-controller='AppController')
     link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
     link(rel='icon', href='/images/favicon.ico', type='image/x-icon')
 
-    base(href='/')
-  body
-    header
+  body.page
 
-    .container
-      .page-header
-        h1 Frontend Boilerplate
-        .menu
-          a(ui-sref="main") Home
-          a(ui-sref="about") About
-
-      div(ui-view="guest")
-
-    footer
-      .container
-        p.text-muted Made with love.
+    ui-view.page-content-wrapper
 
     <!-- build:js(.tmp) /scripts/vendor.js -->
     <!-- inject:js -->
