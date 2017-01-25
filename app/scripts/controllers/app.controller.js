@@ -7,5 +7,5 @@ angular
 AppController.$inject = ['$scope', '$state'];
 
 function AppController($scope, $state) {
-	console.log("$state", $state);
+
 }
