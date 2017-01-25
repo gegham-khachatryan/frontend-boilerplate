@@ -41,7 +41,7 @@ app.config([
                 templateUrl: 'views/home.html'
             })
             .state('app.about', {
-                url: '/',
+                url: '/about',
                 controller: 'AboutController',
                 page: { title: 'About Page' },
                 templateUrl: 'views/about.html'

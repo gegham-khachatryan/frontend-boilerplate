@@ -29,10 +29,6 @@ html(ng-app='app')
     link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
     link(rel='icon', href='/images/favicon.ico', type='image/x-icon')
 
-  body.page
-
-    ui-view.page-content-wrapper
-
     <!-- build:js(.tmp) /scripts/vendor.js -->
     <!-- inject:js -->
     script(src='/scripts/vendor.js')
@@ -44,3 +40,8 @@ html(ng-app='app')
     script(src='/scripts/app.js')
     <!-- endinject -->
     <!-- endbuild -->
+  body.page
+
+    ui-view.page-content-wrapper
+
+
